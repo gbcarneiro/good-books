@@ -1,4 +1,5 @@
 const express = require('express')
+const upload = require('express-fileupload')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
@@ -7,9 +8,10 @@ const routes = require('./routes')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(upload())
 app.use(routes)
 
-mongoose.connect('mongodb+srv://developer:goodbooks@cluster0-yplgd.mongodb.net/test?retryWrites=true&w=majority', 
+mongoose.connect('mongodb+srv://developer:*********@cluster0-yplgd.mongodb.net/test?retryWrites=true&w=majority', 
 {
 	useNewUrlParser: true,
 	useUnifiedTopology: true, 

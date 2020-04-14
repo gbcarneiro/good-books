@@ -14,9 +14,9 @@ const BookSchema = new mongoose.Schema({
 	genres: {
 		type: [String],
 		require: true,
-	}, 
+	},
 
-	book: String,
+	bookFile: String,
 },{
 	toJSON: {
 		virtual: true, 
@@ -24,7 +24,9 @@ const BookSchema = new mongoose.Schema({
 })
 
 BookSchema.virtual('book_url').get(function() {
-  return `http://localhost:3333/files/${this.book}`
+  return `http://localhost:3333/files/${this.bookFile}`
 })
 
 const Book = mongoose.model('Book', BookSchema)
+
+module.exports = Book

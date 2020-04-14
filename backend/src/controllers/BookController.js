@@ -1,24 +1,29 @@
-const express = require('express')
+const upload = require('express-fileupload')
+const path = require('path')
 const Book = require('../models/Book')
 
 module.exports = {
 	async store(req, res) {
-		try {
 			const { name, authors, genres } = req.body
-			const { filename } = req.body //book archive
+
+			const file = req.files.bookFile
+			const bookFile = file.name
+
+			file.mv(path.resolve(path.resolve(`books/${req.files.bookFile.name}`)),  err => {
+				if(err) {
+					console.log(err)
+				} else {
+					console.log('done!')
+				}
+			})
 
 			const book = await Book.create({
-				name,
-				authors, 
-				genres: genres.split(',').map(genre => genre.trim()),
-				book: filename, 
-		})
+				name, 
+				authors,
+				genres,
+				bookFile
+			})
 
-		return res.json(book)
-
-		} catch (err) {
-			return res.status(400).send({ error: 'Send failed' })
-		}
+			res.send({ book })
 	}
 }
- 
