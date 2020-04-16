@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="445px" height="61px" viewBox="0 0 445 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Rockwell-Bold, Rockwell" font-size="78" font-weight="bold" line-spacing="144">
+        <g id="Login" transform="translate(-123.000000, -266.000000)">
+            <g id="Group-2" transform="translate(92.000000, 223.000000)">
+                <g id="logo">
+                    <text id="GoodBooks">
+                        <tspan x="27.9931641" y="102" fill="#FF6366">Good</tspan>
+                        <tspan x="247.672852" y="102" font-family="Rockwell-Regular, Rockwell" font-weight="normal" fill="#737373">Books</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
