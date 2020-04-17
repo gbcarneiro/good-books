@@ -14,7 +14,7 @@ module.exports = {
 
 			user.password = undefined
 			
-			return res.send({ user })
+			return res.json(user)
 		} catch (err) {
 			return res.status(400).send({ error: 'Registration failed' })
 		}
@@ -35,6 +35,6 @@ module.exports = {
 
 		user.password = undefined
 
-		res.send({ user })
+		res.json(user)
 	}
 }
