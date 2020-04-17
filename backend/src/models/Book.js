@@ -17,6 +17,10 @@ const BookSchema = new mongoose.Schema({
 	},
 
 	bookFile: String,
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
+	}
 },{
 	toJSON: {
 		virtual: true, 
