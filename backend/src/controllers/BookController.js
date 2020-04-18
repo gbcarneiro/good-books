@@ -25,7 +25,7 @@ module.exports = {
 			user: user_id,
 			name,
 			authors,
-			genres: genres.split(',').map(genre => genre.trim()),
+			genres: genres.split(',').map(genre => genre.trim()) ,
 			bookfile: filename
 		})
 
