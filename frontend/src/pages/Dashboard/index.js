@@ -21,12 +21,23 @@ export default function Dashboard({ history }) {
         history.push('/')
     }
 
+    async function handleDeleteBook(_id) {
+        try {
+            await api.delete(`/book/${_id}`, {})
+            setBooks(books.filter(book => book._id !== _id))
+        } catch {
+            alert('Error')
+        }
+    }
+
     return (
         <>
             <div className="content">
                 <header className="header">
-                    <Link className="header-logo" onClick={handleLogout}><img src={logo} className="header-logo" alt="Good Books"/></Link>
-                    <Link to="/send" className="button">Send a book</Link>
+                    <Link className="header-logo" onClick={handleLogout}>
+                        <img src={logo} className="header-logo" alt="Good Books"/>
+                    </Link>
+                    <Link to="/book" className="button">Send a book</Link>
                 </header>
 
                 <h1>Your published books</h1>
@@ -37,12 +48,16 @@ export default function Dashboard({ history }) {
                             <p>Name:</p> <strong>{book.name}</strong>
                             <p>Author(s):</p> <strong>{book.authors}</strong>
                             <p>Genre(s):</p> <strong>{book.genres}</strong>
-                            <Link className="download-link">
+                            <a 
+                                href={`http://localhost:3333/files/${book.bookfile}`} 
+                                target="blank" c
+                                lassName="download-link"
+                            >
                                 <FiDownload size={23} color="#E5585B"/>
                                 Download the book
-                            </Link>
+                            </a>
 
-                            <button type="button">
+                            <button onClick={() => handleDeleteBook(book._id)} type="button">
                                 <FiTrash2 size={20} color="#E5585B" />
                             </button>
 
@@ -50,7 +65,9 @@ export default function Dashboard({ history }) {
                     ))}
                 </ul>
             </div>
-            <footer className="footer"><Link className="about-link" to="/about"> ABOUT IT </Link></footer>
+            <footer className="footer">
+                <Link className="about-link" to="/about"> ABOUT IT </Link>
+            </footer>
         </>
     )
 }

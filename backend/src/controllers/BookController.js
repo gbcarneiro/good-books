@@ -1,9 +1,5 @@
-const upload = require('express-fileupload')
-const path = require('path')
-const http = require('http')
-
-const Book = require('../models/Book')
 const User = require('../models/User')
+const Book = require('../models/Book')
 
 module.exports = {
 	async index(req, res) {
@@ -14,12 +10,10 @@ module.exports = {
 	},
 
 	async store(req, res) {
+		const { filename } = req.file
 		const { name, authors, genres } = req.body
 
-		const file = req.files.bookFile
-		const bookFile = file.name
-
-		const {user_id} = req.headers
+		const { user_id } = req.headers 
 
 		const user = await User.findById(user_id)
 
@@ -27,47 +21,27 @@ module.exports = {
 			res.status(401).send({ error: 'The user does not exists' })
 		}
 
-		file.mv(path.resolve(path.resolve(`books/${req.files.bookFile.name}`)),  err => {
-			if(err) {
-				console.log(err)
-			} else {
-				console.log('done!')
-			}
-		})
-
 		const book = await Book.create({
 			user: user_id,
-			name, 
-			authors: authors.split(',').map(author => author.trim()),
+			name,
+			authors,
 			genres: genres.split(',').map(genre => genre.trim()),
-			bookFile
+			bookfile: filename
 		})
 
-		res.json({ book })
+		res.json(book)
 	},
 
 	async delete(req, res) {
 		const { _id } = req.params 
 
-		Book.findByIdAndRemove({ _id }, function(err) {
+		Book.findOneAndDelete({ _id }, function(err) {
 			if(err) {
-				res.json({ error: 'fila da puta'})
+				res.json({ error: 'error'})
 			} else {
-				res.json({ msg: 'deu certor' })
+				res.json({ msg: 'deleted' })
 				console.log('deleted!')
 			}
-		})
+		}) 
 	},
-
-	async download(req, res) {
-		const { _id } = req.params 
-		const bk = await Book.findById( _id )
-
-		if(!bk) {
-			res.send({ err: 'fila da puta' })
-		} else {
-			res.send({ msg: 'downloaded!' })
-		}
-		
-	}
 }
