@@ -1,5 +1,5 @@
 # Good Books
-GoodBooks is a platform for connecting independent writers with passionate readers. The project is inpired in the Omnistack Week by [Rocketseat](https://github.com/rocketseat)
+GoodBooks is a platform for connecting independent writers with passionate readers. 
 ***
 
 ## Aplication 
@@ -26,6 +26,9 @@ GoodBooks is a platform for connecting independent writers with passionate reade
 - [NodeJS](https://nodejs.org/en/)
 - [ReactJS](https://reactjs.org/)
 - [React Native](https://reactnative.dev/)
+
+## Acknowledgments
+The interface and the user journey was based in __Be The Hero__ a project created in OmniStack Week 11 by [@rocketseat](https://github.com/rocketseat) and [@diego3g](https://github.com/diego3g) 🦸‍♀️
 
 ---
 <p align="center"> built by Gabriel Carneiro :ghost: </p>
