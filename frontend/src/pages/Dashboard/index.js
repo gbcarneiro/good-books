@@ -47,7 +47,7 @@ export default function Dashboard({ history }) {
                         <li key={book._id}>
                             <p>Name:</p> <strong>{book.name}</strong>
                             <p>Author(s):</p> <strong>{book.authors}</strong>
-                            <p>Genre(s):</p> <strong>{book.genres}</strong>
+                            <p>Genre(s):</p> <strong>{book.genres.join(', ')}</strong>
                             <a 
                                 href={`http://localhost:3333/files/${book.bookfile}`} 
                                 target="blank" c
