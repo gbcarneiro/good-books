@@ -1,11 +1,19 @@
-import React from 'react'
-import { TouchableOpacity, Image, TextInput, Text, KeyboardAvoidingView, StyleSheet, Platform, Button } from 'react-native'
+import React, { useState } from 'react'
+import { AsyncStorage, TouchableOpacity, Image, TextInput, Text, KeyboardAvoidingView, StyleSheet, Platform, Button } from 'react-native'
+//import AsyncStorage from '@react-native-community/async-storage'
 
-import logo from '../../assets/GoodBooks.png'
+import logo from '../assets/GoodBooks.png'
 
 export default function Logon({ navigation }) {
-    function handleSubmit() {
-        navigation.navigate('Dashboard')
+    const [genres, setGenres] = useState('')
+
+    async function handleSubmit() {
+        if(genres === "") {
+            alert('You need to write a literary')
+        } else {
+            await AsyncStorage.setItem('genres', genres)
+            navigation.navigate('Dashboard')
+        }
     }
 
     function handleAbout() {
@@ -15,7 +23,12 @@ export default function Logon({ navigation }) {
     return (
         <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : 'height'} style={styles.container}>
             <Image style={styles.logo} source={logo} />
-            <TextInput style={styles.input} placeholder="Your literary preferences" />
+            <TextInput 
+                style={styles.input} 
+                placeholder="Your literary preferences" 
+                value={genres}
+                onChangeText={setGenres}
+            />
             <TouchableOpacity  onPress={handleSubmit} style={styles.button}>
                 <Text style={styles.buttonText}>Search</Text>
             </TouchableOpacity>
@@ -41,7 +54,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 6,
         padding: 20,
-        fontFamily: 'Helvetica',
+        //fontFamily: 'Helvetica',
         fontSize: 20,
         marginTop: 50,
         marginBottom: 20,

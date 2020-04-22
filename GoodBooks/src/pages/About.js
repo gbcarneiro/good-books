@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Image, Text, Linking, Button, Icon, TouchableOpacity } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
-import logo from '../../assets/GoodBooks.png'
+import logo from '../assets/GoodBooks.png'
 
 export default function About() {
     function goInstagram() {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
 
     paragraph: {
-        fontFamily: 'Helvetica',
+		//fontFamily: 'Helvetica',
         fontSize: 25,
         padding: 43,
         color: '#A0A0A0',
