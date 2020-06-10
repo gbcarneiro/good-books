@@ -31,4 +31,4 @@ GoodBooks is a platform for connecting independent writers with passionate reade
 The interface and the user journey was based in __Be The Hero__ a project created in OmniStack Week 11 by [@rocketseat](https://github.com/rocketseat) and [@diego3g](https://github.com/diego3g) 🦸‍♀️
 
 ---
-<p align="center"> built by Gabriel Carneiro :ghost: </p>
+<p align="center"> built by Gabriel Carneiro :books: </p>
